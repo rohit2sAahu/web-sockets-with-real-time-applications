@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Production-Chart</title>
+  </head>
+  <body class="bg-warning">
+  	<div class="col-md-6 offset-md-3">
+  		<div class="card">
+  			<div class="card-body">
+  				<h1>Monthly usage of models in product JS</h1>
+  			</div>
+  			<div class="class-body">
+  				<p>click to update</p>
+  				<h1><button class="btn btn-success" onclick="updateChart()">Update </button></h1></div>
+  			<div class="card-body">
+  				<canvas id="myChart"> </canvas>
+  			</div>
+  		</div>
+  	</div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <canvas id="lineChart"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script>
+    	var olddata=[22,30,25,12,45,29,45,27,16];
+    	var newdata=[23,21,45,78,84,56,26,35,14];
+	    var olddata1=[55,12,86,3635,32,19,24,10];
+	    var newdata1=[21,32,62,25,14,24,18,17,38];
+	    var olddata2=[45,10,25,13,48,25,95,35,14];
+	    var newdata2=[,45,24,19,98,75,85,94,35,45];
+
+
+    	var ctx = document.getElementById('myChart').getContext('2d');
+        var chart = new Chart(ctx, {
+	    // The type of chart we want to create
+	    type: 'line',
+
+	    // The data for our dataset
+	    data: {
+	        labels: ['jan','feb','march','april','may','june','july','august','september','October','novebmer','december'], 
+	        datasets: [{
+	            label: 'oldData',
+	            //backgroundColor: 'F5E8E8',
+	            borderColor: '#000000',
+	            data: olddata,
+	            },
+	            {
+	            label: 'newData',
+	            //backgroundColor: 'F5E8E8',
+	            borderColor: 'rgb(255,0,0)',
+	            data: olddata1,
+	            },
+	            {
+	            label: 'newfetch',
+	            //backgroundColor: 'F5E8E8',
+	            borderColor: 'rgb(0,255,0)',
+	            data: olddata1,
+	            }
+	            ]
+	        },
+	    options:{
+	    	title:{
+	    		display:true,
+	    		text:'Monthly-production',
+	    		fontSize:30
+	    	},
+	    	legend:{
+	    		position:'right',
+	    		labels:{
+	    			fontColor:'#800000'
+	    		}
+	    	}
+	    }
+	    });
+	    function updateChart(){
+	    	 chart.data.datasets[0].data=newdata;
+	    	 chart.data.datasets[1].data=newdata1;
+	    	 chart.data.datasets[2].data=newdata2;
+	    	 chart.update();
+	    };
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+</html>
